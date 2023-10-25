@@ -81,8 +81,9 @@ export default class Player {
     }
   }
 
+
   shoot() {
-    const offset = 10
+    // const offset = 10
     const x =
       this.direction === 1 ? this.x + this.width + offset : this.x - offset
     // const y =
