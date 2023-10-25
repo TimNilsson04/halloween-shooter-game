@@ -2,7 +2,7 @@ import InputHandler from './InputHandler.js'
 import Player from './Player.js'
 import UserInterface from './UserInterface.js'
 import Pumpkin from './Pumpkin.js'
-import Candy from './Candy.js'
+// import Candy from './Candy.js'
 export default class Game {
   constructor(width, height, canvasPosition) {
     this.width = width
@@ -18,7 +18,7 @@ export default class Game {
     this.gameTime = 0
     this.enemies = []
     this.enemyTimer = 0
-    this.enemyInterval = 1000
+    this.enemyInterval = 800
 
     this.player = new Player(this)
   }
@@ -40,9 +40,8 @@ export default class Game {
       } else {
         x = Math.random() * this.width // if on bottom edge, randomize x position
       }
-      if (Math.random() < 0.2) {
-        this.enemies.push(new Candy(this, x, y))
-      } else {
+      if (Math.random() < 0.6) {
+        // this.enemies.push(new Candy(this, x, y))
         this.enemies.push(new Pumpkin(this, x, y))
       }
       this.enemyTimer = 0
@@ -56,9 +55,6 @@ export default class Game {
       if (this.checkCollision(this.player, enemy)) {
         this.player.lives--
         enemy.markedForDeletion = true
-        if (enemy.type === 'candy') {
-          this.player.ammo += 5
-        }
       }
       this.player.projectiles.forEach((projectile) => {
         if (this.checkCollision(projectile, enemy)) {

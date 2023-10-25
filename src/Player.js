@@ -27,10 +27,10 @@ export default class Player {
       this.game.gameOver = true
     }
 
-    if (this.game.keys.includes('ArrowLeft') || this.game.keys.includes('a')) {
+    // Moving
+    if (this.game.keys.includes('a')) {
       this.speedX = -this.maxSpeed
     } else if (
-      this.game.keys.includes('ArrowRight') ||
       this.game.keys.includes('d')
     ) {
       this.speedX = this.maxSpeed
@@ -38,16 +38,39 @@ export default class Player {
       this.speedX = 0
     }
 
-    if (this.game.keys.includes('ArrowUp') || this.game.keys.includes('w')) {
+    if (this.game.keys.includes('w')) {
       this.speedY = -this.maxSpeed
     } else if (
-      this.game.keys.includes('ArrowDown') ||
       this.game.keys.includes('s')
     ) {
       this.speedY = this.maxSpeed
     } else {
       this.speedY = 0
     }
+
+    // Shooting
+    if (this.game.keys.includes('ArrowLeft')) {
+      this.game.player.shoot()
+    } else if (
+      this.game.keys.includes('ArrowRight')
+    ) {
+      this.game.player.shoot()
+    } else {
+      // dont shoot
+      this.game.player.shoot()
+    }
+
+    if (this.game.keys.includes('ArrowUp')) {
+      this.game.player.shoot()
+    } else if (
+      this.game.keys.includes('ArrowDown')
+    ) {
+      this.game.player.shoot()
+    } else {
+      // dont shoot
+      this.game.player.shoot()
+    }
+
 
     this.y += this.speedY
     this.x += this.speedX
@@ -87,20 +110,22 @@ export default class Player {
       context.stroke()
     }
 
+    console.log()
+
     this.projectiles.forEach((projectile) => {
       projectile.draw(context)
     })
   }
 
-  shoot(mouseX, mouseY) {
+  shoot() {
     // get angle between player and mouse
     const angle = Math.atan2(
-      mouseY - (this.y + this.height / 2),
-      mouseX - (this.x + this.width / 2)
+      // mouseY - (this.y + this.height / 2),
+      // mouseX - (this.x + this.width / 2)
+
     )
 
     if (this.ammo > 0) {
-      this.ammo--
       this.projectiles.push(
         new Projectile(
           this.game,
