@@ -5,6 +5,7 @@ export default class Projectile {
     this.height = 4
     this.x = x
     this.y = y
+    this.direction = direction
 
     this.speed = 5
     this.damage = 1
