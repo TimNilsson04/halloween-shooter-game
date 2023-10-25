@@ -41,6 +41,17 @@ export default class Player {
       this.game.player.shoot()
     }
 
+
+    if (this.game.keys.includes('ArrowLeft')) {
+      this.direction = -1
+      this.speedX = -this.maxSpeed
+    } else if (this.game.keys.includes('ArrowRight')) {
+      this.direction = 1
+      this.speedX = this.maxSpeed
+    } else {
+      this.speedX = 0
+    }
+
     this.y += this.speedY
     this.x += this.speedX
 
