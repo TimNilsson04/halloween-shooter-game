@@ -31,15 +31,6 @@ export default class Player {
     } else {
       this.speedY = 0
     }
-    if (this.game.keys.includes('ArrowUp')) {
-      this.game.player.shoot()
-    } else if (this.game.keys.includes('ArrowDown')) {
-      this.game.player.shoot()
-    } else if (this.game.keys.includes('ArrowLeft')) {
-      this.game.player.shoot()
-    } else if (this.game.keys.includes('ArrowRight')) {
-      this.game.player.shoot()
-    }
 
 
     if (this.game.keys.includes('ArrowLeft')) {
