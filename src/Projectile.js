@@ -21,11 +21,7 @@ export default class Projectile {
       this.markedForDeletion = true
     }
     this.y += this.speed * this.directionY
-    if (this.y > this.game.height + this.game.y) {
-      this.markedForDeletion = true
-    } else if (this.y < this.game.y) {
-      this.markedForDeletion = true
-    }
+
   }
 
   draw(context) {
