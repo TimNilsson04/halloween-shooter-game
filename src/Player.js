@@ -10,6 +10,8 @@ export default class Player {
 
     this.projectiles = []
 
+    this.direction = 1
+    this.directionY = 1
     this.speedX = 0
     this.speedY = 0
     this.maxSpeed = 10
