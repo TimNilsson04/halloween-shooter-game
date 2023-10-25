@@ -1,5 +1,5 @@
 export default class Projectile {
-  constructor(game, x, y) {
+  constructor(game, x, y, direction) {
     this.game = game
     this.width = 4
     this.height = 4
