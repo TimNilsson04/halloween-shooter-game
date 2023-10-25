@@ -15,7 +15,7 @@ export default class InputHandler {
         this.game.keys.indexOf(event.key) === -1
       ) {
         this.game.keys.push(event.key)
-
+        this.game.player.shoot()
       }
 
       // if (event.key === ' ') {
