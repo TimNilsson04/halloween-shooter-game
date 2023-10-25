@@ -1,11 +1,12 @@
 export default class Projectile {
-  constructor(game, x, y, direction) {
+  constructor(game, x, y, direction, directionY) {
     this.game = game
     this.width = 4
     this.height = 4
     this.x = x
     this.y = y
     this.direction = direction
+    this.directionY = directionY
 
     this.speed = 8
     this.damage = 1
@@ -14,9 +15,15 @@ export default class Projectile {
 
   update() {
     this.x += this.speed * this.direction
-    if (this.x > this.game.width + this.game.camera.x) {
+    if (this.x > this.game.width + this.game.x) {
       this.markedForDeletion = true
-    } else if (this.x < this.game.camera.x) {
+    } else if (this.x < this.game.x) {
+      this.markedForDeletion = true
+    }
+    this.y += this.speed * this.directionY
+    if (this.y > this.game.height + this.game.y) {
+      this.markedForDeletion = true
+    } else if (this.y < this.game.y) {
       this.markedForDeletion = true
     }
   }

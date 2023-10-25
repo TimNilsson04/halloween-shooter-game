@@ -4,10 +4,7 @@ export default class InputHandler {
     window.addEventListener('keydown', (event) => {
       console.log(event.key)
       if (
-        (event.key === 'ArrowUp' ||
-          event.key === 'ArrowDown' ||
-          event.key === 'ArrowLeft' ||
-          event.key === 'ArrowRight' ||
+        (
           event.key === 'a' ||
           event.key === 's' ||
           event.key === 'w' ||
@@ -15,8 +12,21 @@ export default class InputHandler {
         this.game.keys.indexOf(event.key) === -1
       ) {
         this.game.keys.push(event.key)
+
+      }
+
+      if (
+        (event.key === 'ArrowUp' ||
+          event.key === 'ArrowDown' ||
+          event.key === 'ArrowLeft' ||
+          event.key === 'ArrowRight'
+        ) &&
+        this.game.keys.indexOf(event.key) === -1
+      ) {
+        this.game.keys.push(event.key)
         this.game.player.shoot()
       }
+
 
       // if (event.key === ' ') {
       //   this.game.player.shoot()

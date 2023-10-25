@@ -40,6 +40,12 @@ export default class Player {
       this.direction = 1
     }
 
+    if (this.game.keys.includes('ArrowUp')) {
+      this.directionY = -1
+    } else if (this.game.keys.includes('ArrowDown')) {
+      this.directionY = 1
+    }
+
     // if (this.game.keys.includes('ArrowUp')) {
     //   this.directionY = -1
     // } else if (this.game.keys.includes('ArrowDown')) {
@@ -66,30 +72,30 @@ export default class Player {
       projectile.draw(context)
     })
 
-    if (this.game.debug) {
-      context.strokeRect(this.x, this.y, this.width, this.height)
-      context.fillStyle = 'black'
-      context.font = '12px Arial'
-      context.fillText(this.frameX, this.x, this.y - 5)
-      context.fillText(this.grounded, this.x + 20, this.y - 5)
+    // if (this.game.debug) {
+    //   context.strokeRect(this.x, this.y, this.width, this.height)
+    //   context.fillStyle = 'black'
+    //   context.font = '12px Arial'
+    //   context.fillText(this.frameX, this.x, this.y - 5)
+    //   context.fillText(this.grounded, this.x + 20, this.y - 5)
 
-      const x = this.direction === 1 ? this.x + this.width + 10 : this.x - 10
-      context.beginPath()
-      context.moveTo(this.x + this.width / 2, this.y + this.height / 2)
-      context.lineTo(x, this.y + this.height / 2)
-      context.stroke()
-    }
+    //   const x = this.direction === 1 ? this.x + this.width + 10 : this.x - 10
+    //   context.beginPath()
+    //   context.moveTo(this.x + this.width / 2, this.y + this.height / 2)
+    //   context.lineTo(x, this.y + this.height / 2)
+    //   context.stroke()
+    // }
   }
 
 
   shoot() {
-    // const offset = 10
-    const x =
-      this.direction === 1 ? this.x + this.width + offset : this.x - offset
+    // // const offset = 10
+    // const x =
+    //   this.direction === 1 ? this.x + this.width + offset : this.x - offset
     // const y =
     //   this.directionY === 1 ? this.y + this.height + offset : this.y - offset
     this.projectiles.push(
-      new Projectile(this.game, x, this.y + this.height / 2, this.direction)
+      new Projectile(this.game, this.x, this.y, this.direction, this.directionY)
     )
   }
 }
