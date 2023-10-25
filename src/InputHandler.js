@@ -7,7 +7,11 @@ export default class InputHandler {
         (event.key === 'ArrowUp' ||
           event.key === 'ArrowDown' ||
           event.key === 'ArrowLeft' ||
-          event.key === 'ArrowRight') &&
+          event.key === 'ArrowRight' ||
+          event.key === 'a' ||
+          event.key === 's' ||
+          event.key === 'w' ||
+          event.key === 'd') &&
         this.game.keys.indexOf(event.key) === -1
       ) {
         this.game.keys.push(event.key)
@@ -18,7 +22,7 @@ export default class InputHandler {
       //   this.game.player.shoot()
       // }
 
-      if (event.key === 'd') {
+      if (event.key === 'p') {
         this.game.debug = !this.game.debug
       }
     })

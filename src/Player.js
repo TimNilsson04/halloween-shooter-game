@@ -16,21 +16,29 @@ export default class Player {
   }
 
   update(deltaTime) {
-    if (this.game.keys.includes('ArrowLeft')) {
+    if (this.game.keys.includes('a')) {
       this.speedX = -this.maxSpeed
-      this.game.player.shoot()
-    } else if (this.game.keys.includes('ArrowRight')) {
+    } else if (this.game.keys.includes('d')) {
       this.speedX = this.maxSpeed
     } else {
       this.speedX = 0
     }
 
-    if (this.game.keys.includes('ArrowUp')) {
+    if (this.game.keys.includes('w')) {
       this.speedY = -this.maxSpeed
-    } else if (this.game.keys.includes('ArrowDown')) {
+    } else if (this.game.keys.includes('s')) {
       this.speedY = this.maxSpeed
     } else {
       this.speedY = 0
+    }
+    if (this.game.keys.includes('ArrowUp')) {
+      this.game.player.shoot()
+    } else if (this.game.keys.includes('ArrowDown')) {
+      this.game.player.shoot()
+    } else if (this.game.keys.includes('ArrowLeft')) {
+      this.game.player.shoot()
+    } else if (this.game.keys.includes('ArrowRight')) {
+      this.game.player.shoot()
     }
 
     this.y += this.speedY
