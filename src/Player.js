@@ -18,6 +18,7 @@ export default class Player {
   update(deltaTime) {
     if (this.game.keys.includes('ArrowLeft')) {
       this.speedX = -this.maxSpeed
+      this.game.player.shoot()
     } else if (this.game.keys.includes('ArrowRight')) {
       this.speedX = this.maxSpeed
     } else {
