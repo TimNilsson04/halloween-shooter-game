@@ -32,15 +32,16 @@ export default class Player {
       this.speedY = 0
     }
 
-
     if (this.game.keys.includes('ArrowLeft')) {
       this.direction = -1
-      this.speedX = -this.maxSpeed
     } else if (this.game.keys.includes('ArrowRight')) {
       this.direction = 1
-      this.speedX = this.maxSpeed
-    } else {
-      this.speedX = 0
+    }
+
+    if (this.game.keys.includes('ArrowUp')) {
+      this.directionY = -1
+    } else if (this.game.keys.includes('ArrowDown')) {
+      this.directionY = 1
     }
 
     this.y += this.speedY
@@ -82,6 +83,7 @@ export default class Player {
     const offset = 10
     const x =
       this.direction === 1 ? this.x + this.width + offset : this.x - offset
+    this.directionY === 1 ? this.x + this.width + offset : this.x - offset
     this.projectiles.push(
       new Projectile(this.game, this.x + this.width, this.y + this.height / 2)
     )
