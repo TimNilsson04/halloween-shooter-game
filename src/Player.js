@@ -74,6 +74,9 @@ export default class Player {
   }
 
   shoot() {
+    const offset = 10
+    const x =
+      this.direction === 1 ? this.x + this.width + offset : this.x - offset
     this.projectiles.push(
       new Projectile(this.game, this.x + this.width, this.y + this.height / 2)
     )
