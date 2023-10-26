@@ -1,15 +1,15 @@
 export default class Projectile {
-  constructor(game, x, y, angle, direction, directionY) {
+  constructor(game, x, y, angle, directionX, directionY) {
     this.game = game
     this.width = 10
-    this.height = 4
+    this.height = 10
     this.x = x
     this.y = y
     this.angle = angle
-    this.direction = direction
+    this.directionX = directionX
     this.directionY = directionY
 
-    this.speed = 1
+    this.speed = 10
     this.damage = 1
     this.markedForDeletion = false
   }
@@ -19,15 +19,16 @@ export default class Projectile {
     //   x: this.speed * Math.cos(this.angle),
     //   y: this.speed * Math.sin(this.angle),
     // }
-    console.log(this.x)
 
-    this.x += this.speed * this.direction
+
+    this.x += this.speed * this.directionX
     this.y += this.speed * this.directionY
     if (this.x > this.game.width + this.game.x) {
       this.markedForDeletion = true
     } else if (this.x < this.game.x) {
       this.markedForDeletion = true
     }
+
 
     // this.x += velocity.x * (deltaTime / 1000)
     // this.y += velocity.y * (deltaTime / 1000)
@@ -41,8 +42,10 @@ export default class Projectile {
     // context.save()
     // context.translate(this.x, this.y)
     // context.rotate(this.angle)
+
     context.fillStyle = '#ff0'
     context.fillRect(this.x, this.y, this.width, this.height)
     // context.restore()
+
   }
 }

@@ -4,14 +4,14 @@ export default class Player {
   constructor(game) {
     this.game = game
     this.width = 32
-    this.height = 64
+    this.height = 32
     this.x = this.game.width / 2 - this.width / 2
     this.y = this.game.height / 2 - this.height / 2
 
     this.projectiles = []
 
-    this.direction = 1
-    this.directionY = 1
+    this.directionX;
+    this.directionY;
 
     this.speedX = 0
     this.speedY = 0
@@ -51,41 +51,45 @@ export default class Player {
       this.speedY = 0
     }
 
-    // // Shooting
+    // Shooting
+    if (this.game.keys.includes('ArrowLeft')) {
+      this.directionX = -1
+      this.directionY = 0
+      this.game.player.shoot()
+    } else if (
+      this.game.keys.includes('ArrowRight')
+    ) {
+      this.directionX = 1
+      this.directionY = 0
+      this.game.player.shoot()
+    } else if (
+      this.game.keys.includes('ArrowUp')) {
+      this.directionY = -1
+      this.directionX = 0
+      this.game.player.shoot()
+    } else if (
+      this.game.keys.includes('ArrowDown')
+    ) {
+      this.directionY = 1
+      this.directionX = 0
+      this.game.player.shoot()
+    }
+
     // if (this.game.keys.includes('ArrowLeft')) {
     //   this.direction = -1
     //   this.directionY = 0
-    // } else if (
-    //   this.game.keys.includes('ArrowRight')
-    // ) {
+    // } else if (this.game.keys.includes('ArrowRight')) {
     //   this.direction = 1
     //   this.directionY = 0
-    // } else if (
-    //   this.game.keys.includes('ArrowUp')) {
+    // }
+
+    // if (this.game.keys.includes('ArrowUp')) {
     //   this.directionY = -1
     //   this.direction = 0
-    // } else if (
-    //   this.game.keys.includes('ArrowDown')
-    // ) {
+    // } else if (this.game.keys.includes('ArrowDown')) {
     //   this.directionY = 1
     //   this.direction = 0
     // }
-
-    if (this.game.keys.includes('ArrowLeft')) {
-      this.direction = -1
-      this.directionY = 0
-    } else if (this.game.keys.includes('ArrowRight')) {
-      this.direction = 1
-      this.directionY = 0
-    }
-
-    if (this.game.keys.includes('ArrowUp')) {
-      this.directionY = -1
-      this.direction = 0
-    } else if (this.game.keys.includes('ArrowDown')) {
-      this.directionY = 1
-      this.direction = 0
-    }
 
 
     this.y += this.speedY
@@ -115,8 +119,8 @@ export default class Player {
       context.strokeRect(this.x, this.y, this.width, this.height)
       context.lineWidth = 1
       context.beginPath()
-      const dx = this.game.input.mouseX - (this.x + this.width / 2)
-      const dy = this.game.input.mouseY - (this.y + this.height / 2)
+      const dx = 16
+      const dy = 16
       const maxLength = 60
       const angle = Math.atan2(dy, dx)
       const x = this.x + this.width / 2 + maxLength * Math.cos(angle)
@@ -126,7 +130,7 @@ export default class Player {
       context.stroke()
     }
 
-    console.log()
+
 
     this.projectiles.forEach((projectile) => {
       projectile.draw(context)
@@ -136,14 +140,15 @@ export default class Player {
   shoot() {
     // get angle between player and mouse
     // const angle = Math.atan2(
-    // mouseY - (this.y + this.height / 2),
-    // mouseX - (this.x + this.width / 2)
+    //   16,
+    //   16
+    // )
 
 
     // if (this.ammo > 0) {
     this.projectiles.push(
       new Projectile(
-        this.game, this.x, this.y, this.direction, this.directionY
+        this.game, this.x + 12, this.y + 15, 0, this.directionX, this.directionY
       )
     )
     // } else {

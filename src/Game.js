@@ -18,7 +18,7 @@ export default class Game {
     this.gameTime = 0
     this.enemies = []
     this.enemyTimer = 0
-    this.enemyInterval = 800
+    this.enemyInterval = 10
 
     this.player = new Player(this)
   }
