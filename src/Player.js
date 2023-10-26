@@ -141,14 +141,14 @@ export default class Player {
 
 
 
-    if (this.ammo > 0) {
-      this.projectiles.push(
-        new Projectile(
-          this.game, this.x, this.y, this.direction, this.directionY
-        )
+    // if (this.ammo > 0) {
+    this.projectiles.push(
+      new Projectile(
+        this.game, this.x, this.y, this.direction, this.directionY
       )
-    } else {
-      console.log('out of ammo')
-    }
+    )
+    // } else {
+    //   console.log('out of ammo')
+    // }
   }
 }
