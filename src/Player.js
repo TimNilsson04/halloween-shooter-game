@@ -50,20 +50,39 @@ export default class Player {
 
     // Shooting
     if (this.game.keys.includes('ArrowLeft')) {
-      this.game.player.shoot()
+      this.direction = -1
+      this.directionY = 0
     } else if (
       this.game.keys.includes('ArrowRight')
     ) {
-      this.game.player.shoot()
+      this.direction = 1
+      this.directionY = 0
     } else if (
       this.game.keys.includes('ArrowUp')) {
-      this.game.player.shoot()
+      this.directionY = -1
+      this.direction = 0
     } else if (
       this.game.keys.includes('ArrowDown')
     ) {
-      this.game.player.shoot()
+      this.directionY = 1
+      this.direction = 0
     }
 
+    // if (this.game.keys.includes('ArrowLeft')) {
+    //   this.direction = -1
+    //   this.directionY = 0
+    // } else if (this.game.keys.includes('ArrowRight')) {
+    //   this.direction = 1
+    //   this.directionY = 0
+    // }
+
+    // if (this.game.keys.includes('ArrowUp')) {
+    //   this.directionY = -1
+    //   this.direction = 0
+    // } else if (this.game.keys.includes('ArrowDown')) {
+    //   this.directionY = 1
+    //   this.direction = 0
+    // }
 
 
     this.y += this.speedY
