@@ -51,41 +51,41 @@ export default class Player {
       this.speedY = 0
     }
 
-    // Shooting
-    if (this.game.keys.includes('ArrowLeft')) {
-      this.direction = -1
-      this.directionY = 0
-    } else if (
-      this.game.keys.includes('ArrowRight')
-    ) {
-      this.direction = 1
-      this.directionY = 0
-    } else if (
-      this.game.keys.includes('ArrowUp')) {
-      this.directionY = -1
-      this.direction = 0
-    } else if (
-      this.game.keys.includes('ArrowDown')
-    ) {
-      this.directionY = 1
-      this.direction = 0
-    }
-
+    // // Shooting
     // if (this.game.keys.includes('ArrowLeft')) {
     //   this.direction = -1
     //   this.directionY = 0
-    // } else if (this.game.keys.includes('ArrowRight')) {
+    // } else if (
+    //   this.game.keys.includes('ArrowRight')
+    // ) {
     //   this.direction = 1
     //   this.directionY = 0
-    // }
-
-    // if (this.game.keys.includes('ArrowUp')) {
+    // } else if (
+    //   this.game.keys.includes('ArrowUp')) {
     //   this.directionY = -1
     //   this.direction = 0
-    // } else if (this.game.keys.includes('ArrowDown')) {
+    // } else if (
+    //   this.game.keys.includes('ArrowDown')
+    // ) {
     //   this.directionY = 1
     //   this.direction = 0
     // }
+
+    if (this.game.keys.includes('ArrowLeft')) {
+      this.direction = -1
+      this.directionY = 0
+    } else if (this.game.keys.includes('ArrowRight')) {
+      this.direction = 1
+      this.directionY = 0
+    }
+
+    if (this.game.keys.includes('ArrowUp')) {
+      this.directionY = -1
+      this.direction = 0
+    } else if (this.game.keys.includes('ArrowDown')) {
+      this.directionY = 1
+      this.direction = 0
+    }
 
 
     this.y += this.speedY
