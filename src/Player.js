@@ -140,7 +140,6 @@ export default class Player {
     // mouseX - (this.x + this.width / 2)
 
 
-
     // if (this.ammo > 0) {
     this.projectiles.push(
       new Projectile(
@@ -152,3 +151,4 @@ export default class Player {
     // }
   }
 }
+

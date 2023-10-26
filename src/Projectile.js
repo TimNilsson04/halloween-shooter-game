@@ -9,7 +9,7 @@ export default class Projectile {
     this.direction = direction
     this.directionY = directionY
 
-    this.speed = 400
+    this.speed = 1
     this.damage = 1
     this.markedForDeletion = false
   }
@@ -19,6 +19,7 @@ export default class Projectile {
     //   x: this.speed * Math.cos(this.angle),
     //   y: this.speed * Math.sin(this.angle),
     // }
+    console.log(this.x)
 
     this.x += this.speed * this.direction
     this.y += this.speed * this.directionY
@@ -37,11 +38,11 @@ export default class Projectile {
   }
 
   draw(context) {
-    context.save()
-    context.translate(this.x, this.y)
-    context.rotate(this.angle)
+    // context.save()
+    // context.translate(this.x, this.y)
+    // context.rotate(this.angle)
     context.fillStyle = '#ff0'
     context.fillRect(this.x, this.y, this.width, this.height)
-    context.restore()
+    // context.restore()
   }
 }
