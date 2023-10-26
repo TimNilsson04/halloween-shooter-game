@@ -15,12 +15,12 @@ export default class Projectile {
 
   update() {
     this.x += this.speed * this.direction
+    this.y += this.speed * this.directionY
     if (this.x > this.game.width + this.game.x) {
       this.markedForDeletion = true
     } else if (this.x < this.game.x) {
       this.markedForDeletion = true
     }
-    this.y += this.speed * this.directionY
 
   }
 
