@@ -18,7 +18,8 @@ export default class Game {
     this.gameTime = 0
     this.enemies = []
     this.enemyTimer = 0
-    this.enemyInterval = 10
+    this.enemyInterval = 0
+    this.round = 1
 
     this.player = new Player(this)
   }
@@ -27,6 +28,9 @@ export default class Game {
     if (!this.gameOver) {
       this.gameTime += deltaTime
     }
+
+
+    this.enemyInterval = Math.pow()
 
     if (this.enemyTimer > this.enemyInterval) {
       let x = Math.random() < 0.5 ? 0 : this.width // spawn on left or right edge
@@ -68,7 +72,10 @@ export default class Game {
       })
     })
     this.enemies = this.enemies.filter((enemy) => !enemy.markedForDeletion)
+
   }
+
+
 
   draw(context) {
     this.ui.draw(context)

@@ -56,6 +56,7 @@ export default class Player {
       this.directionX = -1
       this.directionY = 0
       this.game.player.shoot()
+
     } else if (
       this.game.keys.includes('ArrowRight')
     ) {
@@ -75,22 +76,14 @@ export default class Player {
       this.game.player.shoot()
     }
 
-    // if (this.game.keys.includes('ArrowLeft')) {
-    //   this.direction = -1
-    //   this.directionY = 0
-    // } else if (this.game.keys.includes('ArrowRight')) {
-    //   this.direction = 1
-    //   this.directionY = 0
-    // }
+    if (this.x > this.game.width - 26 || this.x < 0) {
+      this.x = this.speedX
 
-    // if (this.game.keys.includes('ArrowUp')) {
-    //   this.directionY = -1
-    //   this.direction = 0
-    // } else if (this.game.keys.includes('ArrowDown')) {
-    //   this.directionY = 1
-    //   this.direction = 0
-    // }
+    }
 
+    if (this.y > this.game.height - 26 || this.y < 0) {
+      this.y = this.speedY;
+    }
 
     this.y += this.speedY
     this.x += this.speedX
@@ -109,6 +102,12 @@ export default class Player {
     this.projectiles = this.projectiles.filter(
       (projectile) => !projectile.markedForDeletion
     )
+
+    console.log(this.speedX)
+
+
+
+
   }
 
   draw(context) {
@@ -151,6 +150,7 @@ export default class Player {
         this.game, this.x + 12, this.y + 15, 0, this.directionX, this.directionY
       )
     )
+
     // } else {
     //   console.log('out of ammo')
     // }
