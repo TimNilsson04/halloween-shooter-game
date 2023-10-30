@@ -15,10 +15,7 @@ export default class Projectile {
   }
 
   update(deltaTime) {
-    // const velocity = {
-    //   x: this.speed * Math.cos(this.angle),
-    //   y: this.speed * Math.sin(this.angle),
-    // }
+
 
 
     this.x += this.speed * this.directionX
@@ -29,13 +26,6 @@ export default class Projectile {
       this.markedForDeletion = true
     }
 
-
-    // this.x += velocity.x * (deltaTime / 1000)
-    // this.y += velocity.y * (deltaTime / 1000)
-
-    // if (this.x > this.game.width) {
-    //   this.markedForDeletion = true
-    // }
   }
 
   draw(context) {

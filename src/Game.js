@@ -18,7 +18,7 @@ export default class Game {
     this.gameTime = 0
     this.enemies = []
     this.enemyTimer = 0
-    this.enemyInterval = 0
+    this.enemyInterval = 100
     this.round = 1
 
     this.player = new Player(this)
@@ -30,7 +30,7 @@ export default class Game {
     }
 
 
-    this.enemyInterval = Math.pow()
+    // this.enemyInterval = Math.pow()
 
     if (this.enemyTimer > this.enemyInterval) {
       let x = Math.random() < 0.5 ? 0 : this.width // spawn on left or right edge

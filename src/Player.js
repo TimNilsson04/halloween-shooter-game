@@ -17,6 +17,9 @@ export default class Player {
     this.speedY = 0
     this.maxSpeed = 6
 
+    this.shootTimer = 0
+    this.shootInterval = 100
+
     this.maxAmmo = 20
     this.ammo = 20
     this.ammoTimer = 0
@@ -52,28 +55,31 @@ export default class Player {
     }
 
     // Shooting
-    if (this.game.keys.includes('ArrowLeft')) {
-      this.directionX = -1
-      this.directionY = 0
-      this.game.player.shoot()
-
-    } else if (
-      this.game.keys.includes('ArrowRight')
-    ) {
-      this.directionX = 1
-      this.directionY = 0
-      this.game.player.shoot()
-    } else if (
-      this.game.keys.includes('ArrowUp')) {
-      this.directionY = -1
-      this.directionX = 0
-      this.game.player.shoot()
-    } else if (
-      this.game.keys.includes('ArrowDown')
-    ) {
-      this.directionY = 1
-      this.directionX = 0
-      this.game.player.shoot()
+    if (this.shootTimer > this.shootInterval) {
+      if (this.game.keys.includes('ArrowLeft')) {
+        this.directionX = -1
+        this.directionY = 0
+        this.game.player.shoot()
+      } else if (
+        this.game.keys.includes('ArrowRight')
+      ) {
+        this.directionX = 1
+        this.directionY = 0
+        this.game.player.shoot()
+      } else if (
+        this.game.keys.includes('ArrowUp')) {
+        this.directionY = -1
+        this.directionX = 0
+        this.game.player.shoot()
+      } else if (
+        this.game.keys.includes('ArrowDown')
+      ) {
+        this.directionY = 1
+        this.directionX = 0
+        this.game.player.shoot()
+      } this.shootTimer = 0
+    } else {
+      this.shootTimer += deltaTime
     }
 
     if (this.x > this.game.width - 26 || this.x < 0) {
@@ -137,23 +143,11 @@ export default class Player {
   }
 
   shoot() {
-    // get angle between player and mouse
-    // const angle = Math.atan2(
-    //   16,
-    //   16
-    // )
-
-
-    // if (this.ammo > 0) {
     this.projectiles.push(
       new Projectile(
         this.game, this.x + 12, this.y + 15, 0, this.directionX, this.directionY
       )
     )
-
-    // } else {
-    //   console.log('out of ammo')
-    // }
   }
 }
 

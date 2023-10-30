@@ -1,8 +1,7 @@
 export default class InputHandler {
   constructor(game) {
     this.game = game
-    // this.mouseX = 0
-    // this.mouseY = 0
+
 
     window.addEventListener('keydown', (event) => {
       if (
@@ -27,10 +26,6 @@ export default class InputHandler {
       }
 
 
-      // if (event.key === ' ') {
-      //   this.game.player.shoot(this.mouseX, this.mouseY)
-      // }
-
       if (event.key === 'p') {
         this.game.debug = !this.game.debug
       }
@@ -41,14 +36,5 @@ export default class InputHandler {
         this.game.keys.splice(this.game.keys.indexOf(event.key), 1)
       }
     })
-
-    // window.addEventListener('mousemove', (event) => {
-    //   this.mouseX = event.clientX - this.game.canvasPosition.left
-    //   this.mouseY = event.clientY - this.game.canvasPosition.top
-    // })
-
-    // window.addEventListener('mousedown', (event) => {
-    //   this.game.player.shoot(this.mouseX, this.mouseY)
-    // })
   }
 }
