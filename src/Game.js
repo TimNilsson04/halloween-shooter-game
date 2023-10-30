@@ -3,6 +3,7 @@ import Player from './Player.js'
 import UserInterface from './UserInterface.js'
 import Pumpkin from './Pumpkin.js'
 import Vampire from './Vampire.js'
+import Goblin from './Goblin.js'
 // import Candy from './Candy.js'
 export default class Game {
   constructor(width, height, canvasPosition) {
@@ -57,6 +58,12 @@ export default class Game {
       }
       if (Math.random() < 0.05) {
         this.enemies.push(new Vampire(this, x, y))
+      }
+      if (Math.random() < 0.2) {
+        this.enemies.push(new Goblin(this, y, x))
+      }
+      if (Math.random() < 0.2) {
+        this.enemies.push(new Goblin(this, x, y))
       }
       this.enemyTimer = 0
     } else {

@@ -1,15 +1,15 @@
 import Enemy from './Enemy.js'
 
-export default class Vampire extends Enemy {
+export default class Goblin extends Enemy {
     constructor(game, x, y) {
         super(game)
-        this.width = 64
-        this.height = 64
+        this.width = 16
+        this.height = 16
         this.x = x
         this.y = y
-        this.speed = 1
-        this.lives = Math.floor(Math.random() * (80 - 50) + 50)
-        this.color = 'black'
+        this.speed = 5
+        this.lives = 1
+        this.color = '#355E3B'
     }
 
     update(player) {
