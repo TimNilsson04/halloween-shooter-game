@@ -2,6 +2,7 @@ import InputHandler from './InputHandler.js'
 import Player from './Player.js'
 import UserInterface from './UserInterface.js'
 import Pumpkin from './Pumpkin.js'
+import Vampire from './Vampire.js'
 // import Candy from './Candy.js'
 export default class Game {
   constructor(width, height, canvasPosition) {
@@ -18,7 +19,7 @@ export default class Game {
     this.gameTime = 0
     this.enemies = []
     this.enemyTimer = 0
-    this.enemyInterval = 100
+    this.enemyInterval = 1000
     this.round = 1
 
     this.player = new Player(this)
@@ -45,11 +46,17 @@ export default class Game {
       } else if (y === this.height) {
         x = Math.random() * this.width // if on bottom edge, randomize x position
       }
-
-
       if (Math.random() < 0.6) {
-        // this.enemies.push(new Candy(this, x, y))
+        this.enemies.push(new Pumpkin(this, y, x))
+      }
+      if (Math.random() < 0.6) {
         this.enemies.push(new Pumpkin(this, x, y))
+      }
+      if (Math.random() < 0.05) {
+        this.enemies.push(new Vampire(this, y, x))
+      }
+      if (Math.random() < 0.05) {
+        this.enemies.push(new Vampire(this, x, y))
       }
       this.enemyTimer = 0
     } else {
