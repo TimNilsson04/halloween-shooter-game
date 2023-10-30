@@ -1,4 +1,6 @@
 import Projectile from './Projectile.js'
+import Shoot from './Shoot.js'
+import Shotgun from './Shotgun.js'
 
 export default class Player {
   constructor(game) {
@@ -18,7 +20,7 @@ export default class Player {
     this.maxSpeed = 6
 
     this.shootTimer = 0
-    this.shootInterval = 100
+    this.shootInterval = 50
 
     this.maxAmmo = 20
     this.ammo = 20
@@ -109,7 +111,7 @@ export default class Player {
       (projectile) => !projectile.markedForDeletion
     )
 
-    console.log(this.speedX)
+
 
 
 
@@ -134,9 +136,6 @@ export default class Player {
       context.lineTo(x, y)
       context.stroke()
     }
-
-
-
     this.projectiles.forEach((projectile) => {
       projectile.draw(context)
     })
@@ -144,8 +143,17 @@ export default class Player {
 
   shoot() {
     this.projectiles.push(
-      new Projectile(
-        this.game, this.x + 12, this.y + 15, 0, this.directionX, this.directionY
+      new Shoot(
+        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
+      )
+    )
+  }
+
+
+  shotgun() {
+    this.projectiles.push(
+      new Shotgun(
+        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
       )
     )
   }

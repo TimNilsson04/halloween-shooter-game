@@ -1,16 +1,11 @@
 export default class Projectile {
-  constructor(game, x, y, angle, directionX, directionY) {
+  constructor(game, directionX, directionY) {
     this.game = game
-    this.width = 10
-    this.height = 10
-    this.x = x
-    this.y = y
-    this.angle = angle
+    this.x = 0
+    this.y = 0
     this.directionX = directionX
     this.directionY = directionY
 
-    this.speed = 10
-    this.damage = 1
     this.markedForDeletion = false
   }
 
