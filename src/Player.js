@@ -61,7 +61,7 @@ export default class Player {
       if (this.game.keys.includes('ArrowLeft')) {
         this.directionX = -1
         this.directionY = 0
-        this.game.player.shotgun()
+        this.game.player.shoot()
       } else if (
         this.game.keys.includes('ArrowRight')
       ) {
@@ -112,25 +112,20 @@ export default class Player {
       (projectile) => !projectile.markedForDeletion
     )
 
-
-
-
-
-
   }
 
   draw(context) {
     context.fillStyle = '#f00'
     context.fillRect(this.x, this.y, this.width, this.height)
+    const dx = 10
+    const dy = 10
+    const angle = Math.atan2(dy, dx)
     if (this.game.debug) {
       context.strokeStyle = '#000'
       context.strokeRect(this.x, this.y, this.width, this.height)
       context.lineWidth = 1
       context.beginPath()
-      const dx = 16
-      const dy = 16
       const maxLength = 60
-      const angle = Math.atan2(dy, dx)
       const x = this.x + this.width / 2 + maxLength * Math.cos(angle)
       const y = this.y + this.height / 2 + maxLength * Math.sin(angle)
       context.moveTo(this.x + this.width / 2, this.y + this.height / 2)
@@ -142,6 +137,7 @@ export default class Player {
     })
   }
 
+
   shoot() {
     this.projectiles.push(
       new Shoot(
@@ -151,10 +147,23 @@ export default class Player {
   }
 
 
-  shotgun() {
+  shotgun(angle) {
+    console.log(angle)
     this.projectiles.push(
       new Shotgun(
-        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
+        this.game, this.x + 12, this.y + 15, angle, this.directionX, this.directionY
+      ),
+      new Shotgun(
+        this.game, this.x + 12, this.y + 15, angle + 5, this.directionX, this.directionY
+      ),
+      new Shotgun(
+        this.game, this.x + 12, this.y + 15, angle - 5, this.directionX, this.directionY
+      ),
+      new Shotgun(
+        this.game, this.x + 12, this.y + 15, angle, this.directionX, this.directionY
+      ),
+      new Shotgun(
+        this.game, this.x + 12, this.y + 15, angle, this.directionX, this.directionY
       )
     )
   }
