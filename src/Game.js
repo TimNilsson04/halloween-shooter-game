@@ -4,6 +4,7 @@ import UserInterface from './UserInterface.js'
 import Pumpkin from './Pumpkin.js'
 import Vampire from './Vampire.js'
 import Goblin from './Goblin.js'
+import Background from './Background.js'
 
 export default class Game {
   constructor(width, height, canvasPosition) {
@@ -12,6 +13,8 @@ export default class Game {
     this.canvasPosition = canvasPosition
     this.input = new InputHandler(this)
     this.ui = new UserInterface(this)
+    this.background = new Background(this)
+
     this.keys = []
     this.enemies = []
     this.gameOver = false
