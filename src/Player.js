@@ -24,6 +24,13 @@ export default class Player {
     image.src = playerArt
     this.image = image
 
+    this.frameX = 0
+    this.frameY = 1
+    this.maxFrame = 8
+    this.fps = 20
+    this.timer = 0
+    this.interval = 1000 / this.fps
+
     this.shootTimer = 0
     this.shootInterval = 50
 
