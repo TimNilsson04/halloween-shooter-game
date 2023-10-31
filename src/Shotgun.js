@@ -13,7 +13,7 @@ export default class Shotgun extends Projectile {
         this.directionY = directionY
 
         this.speed = 10
-        this.damage = 1
+        this.damage = 0.5
         this.markedForDeletion = false
 
     }

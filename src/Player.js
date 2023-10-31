@@ -61,7 +61,7 @@ export default class Player {
       if (this.game.keys.includes('ArrowLeft')) {
         this.directionX = -1
         this.directionY = 0
-        this.game.player.shoot()
+        this.game.player.shotgun()
       } else if (
         this.game.keys.includes('ArrowRight')
       ) {
@@ -79,7 +79,8 @@ export default class Player {
         this.directionY = 1
         this.directionX = 0
         this.game.player.shoot()
-      } this.shootTimer = 0
+      }
+      this.shootTimer = 0
     } else {
       this.shootTimer += deltaTime
     }

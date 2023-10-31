@@ -6,4 +6,6 @@ document.querySelector('#app').innerHTML = `
   <canvas id="canvas1"></canvas>
 `
 
+console.log("WHAAAT chat")
+
 setup(document.querySelector('#canvas1'))
