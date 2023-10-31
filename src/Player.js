@@ -156,7 +156,7 @@ export default class Player {
     context.drawImage(
       this.image,
       this.frameX * this.width,
-      this.frameY * this.height - 14,
+      this.frameY * this.height - 30,
       this.width,
       this.height,
       this.flip ? this.x * -1 - this.width : this.x,
