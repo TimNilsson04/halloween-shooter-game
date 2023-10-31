@@ -1,4 +1,4 @@
-import backgroundImage from './assets/layers/backgroundImage.jpg'
+import backgroundImage from './assets/background/backgroundImage.jpg'
 import Layer from './Layer'
 
 export default class Background {

@@ -95,6 +95,7 @@ export default class Game {
 
 
   draw(context) {
+    this.background.draw(context)
     this.ui.draw(context)
     this.player.draw(context)
     this.enemies.forEach((enemy) => {
