@@ -1,6 +1,7 @@
 import Projectile from './Projectile.js'
 import Shoot from './Shoot.js'
 import Shotgun from './Shotgun.js'
+import playerArt from './assets/player/playerArt.webp'
 
 export default class Player {
   constructor(game) {
@@ -18,6 +19,10 @@ export default class Player {
     this.speedX = 0
     this.speedY = 0
     this.maxSpeed = 6
+
+    const image = new Image()
+    image.src = playerArt
+    this.image = image
 
     this.shootTimer = 0
     this.shootInterval = 50
