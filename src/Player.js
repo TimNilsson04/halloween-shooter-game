@@ -120,7 +120,8 @@ export default class Player {
   }
 
   draw(context) {
-    context.fillStyle = '#f00'
+    this.image,
+      context.fillStyle = '#f00'
     context.fillRect(this.x, this.y, this.width, this.height)
     const dx = 10
     const dy = 10
