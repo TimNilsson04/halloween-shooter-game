@@ -120,8 +120,7 @@ export default class Player {
   }
 
   draw(context) {
-    this.image,
-      context.fillStyle = '#f00'
+    context.fillStyle = '#f00'
     context.fillRect(this.x, this.y, this.width, this.height)
     const dx = 10
     const dy = 10
@@ -138,9 +137,25 @@ export default class Player {
       context.lineTo(x, y)
       context.stroke()
     }
+
+
     this.projectiles.forEach((projectile) => {
       projectile.draw(context)
     })
+
+
+    context.drawImage(
+      this.image,
+      this.frameX * this.width,
+      this.frameY * this.height - 14,
+      this.width,
+      this.height,
+      this.flip ? this.x * -1 - this.width : this.x,
+      this.y,
+      this.width,
+      this.height
+    )
+
   }
 
 
