@@ -31,6 +31,8 @@ export default class Player {
     this.timer = 0
     this.interval = 1000 / this.fps
 
+    this.flip = false
+
     this.shootTimer = 0
     this.shootInterval = 50
 
