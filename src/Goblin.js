@@ -9,7 +9,7 @@ export default class Goblin extends Enemy {
         this.y = y
         this.speed = 5
         this.lives = 1
-        this.color = '#355E3B'
+        this.color = '#90EE90'
     }
 
     update(player) {
