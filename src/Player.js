@@ -129,8 +129,6 @@ export default class Player {
   }
 
   draw(context) {
-    context.fillStyle = '#f00'
-    context.fillRect(this.x, this.y, this.width, this.height)
     const dx = 10
     const dy = 10
     const angle = Math.atan2(dy, dx)
@@ -152,6 +150,10 @@ export default class Player {
       projectile.draw(context)
     })
 
+    if (this.flip) {
+      context.save()
+      context.scale(-1, 1)
+    }
 
     context.drawImage(
       this.image,

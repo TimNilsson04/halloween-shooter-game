@@ -6,7 +6,7 @@ export default class Background {
     this.game = game
     const background = new Image()
     background.src = backgroundImage
-    this.backgroundLayer = new Layer(this.game, background, 1708, 500, 0.2)
+    this.backgroundLayer = new Layer(this.game, background, 1708, 500, 0.1)
     this.layers = [
       this.backgroundLayer
     ]

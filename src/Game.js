@@ -33,6 +33,9 @@ export default class Game {
     if (!this.gameOver) {
       this.gameTime += deltaTime
     }
+    if (this.gameOver) {
+      return
+    }
 
 
     // this.enemyInterval = Math.pow()
