@@ -126,24 +126,12 @@ export default class Player {
       (projectile) => !projectile.markedForDeletion
     )
 
-    // if (this.speedX < 0) {
-    //   this.flip = true
-    // } else if (this.speedX > 0) {
-    //   this.flip = false
-    // }
-
-    // sprite animation update
-    if (this.timer > this.interval) {
-      this.frameX++
-      this.timer = 0
-    } else {
-      this.timer += deltaTime
+    if (this.speedX < 0) {
+      this.flip = true
+    } else if (this.speedX > 0) {
+      this.flip = false
     }
 
-    // reset frameX when it reaches maxFrame
-    if (this.frameX >= this.maxFrame) {
-      this.frameX = 0
-    }
   }
 
   draw(context) {
