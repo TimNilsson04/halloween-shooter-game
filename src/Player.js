@@ -132,6 +132,18 @@ export default class Player {
     //   this.flip = false
     // }
 
+    // sprite animation update
+    if (this.timer > this.interval) {
+      this.frameX++
+      this.timer = 0
+    } else {
+      this.timer += deltaTime
+    }
+
+    // reset frameX when it reaches maxFrame
+    if (this.frameX >= this.maxFrame) {
+      this.frameX = 0
+    }
   }
 
   draw(context) {
