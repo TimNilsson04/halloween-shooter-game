@@ -126,6 +126,12 @@ export default class Player {
       (projectile) => !projectile.markedForDeletion
     )
 
+    // if (this.speedX < 0) {
+    //   this.flip = true
+    // } else if (this.speedX > 0) {
+    //   this.flip = false
+    // }
+
   }
 
   draw(context) {
