@@ -4,8 +4,8 @@ export default class Shoot extends Projectile {
     constructor(game, x, y, directionX, directionY) {
         super(game)
         this.game = game
-        this.width = 10
-        this.height = 10
+        this.width = 7
+        this.height = 7
         this.x = x
         this.y = y
         this.directionX = directionX

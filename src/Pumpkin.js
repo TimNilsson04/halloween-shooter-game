@@ -34,9 +34,28 @@ export default class Pumpkin extends Enemy {
     const speedY = (dy / distance) * this.speed // calculate the y speed towards the player
     this.x += speedX // move the enemy towards the player on the x axis
     this.y += speedY // move the enemy towards the player on the y axis
+
+
+    if (speedX < 0) {
+      this.flipPumpkin = false
+    } else if (speedX > 0) {
+      this.flipPumpkin = true
+    }
+
+    console.log()
   }
 
   draw(context) {
+
+    if (this.game.debug) {
+      context.strokeRect(this.x, this.y, this.width, this.height)
+      context.fillStyle = 'white'
+      context.font = '20px Arial'
+      context.fillText(this.lives, this.x, this.y - 5)
+      context.font = '12px Arial'
+      context.fillText(`x: ${this.x.toFixed()}`, this.x + 20, this.y - 5)
+      context.fillText(`y: ${this.y.toFixed()}`, this.x + 20, this.y - 20)
+    }
 
     if (this.flipPumpkin) {
       context.save()
@@ -55,5 +74,6 @@ export default class Pumpkin extends Enemy {
       this.height
     )
 
+    context.restore()
   }
 }

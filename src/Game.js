@@ -40,6 +40,8 @@ export default class Game {
 
     // this.enemyInterval = Math.pow()
 
+
+
     if (this.enemyTimer > this.enemyInterval) {
       let x = Math.random() < 0.5 ? 0 : this.width // spawn on left or right edge
       let y = Math.random() < 0.5 ? 0 : this.height // spawn on top or bottom edge
@@ -59,10 +61,10 @@ export default class Game {
       if (Math.random() < 0.6) {
         this.enemies.push(new Pumpkin(this, x, y))
       }
-      if (Math.random() < 0.05) {
+      if (Math.random() < 0.03) {
         this.enemies.push(new Vampire(this, y, x))
       }
-      if (Math.random() < 0.05) {
+      if (Math.random() < 0.03) {
         this.enemies.push(new Vampire(this, x, y))
       }
       if (Math.random() < 0.2) {

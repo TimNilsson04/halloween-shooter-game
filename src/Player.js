@@ -34,14 +34,14 @@ export default class Player {
     this.flip = false
 
     this.shootTimer = 0
-    this.shootInterval = 50
+    this.shootInterval = 70
 
     this.maxAmmo = 20
     this.ammo = 20
     this.ammoTimer = 0
     this.ammoInterval = 500
 
-    this.lives = 10
+    this.lives = 3
   }
 
   update(deltaTime) {
@@ -127,12 +127,11 @@ export default class Player {
     )
 
     if (this.speedX < 0) {
-      this.flip = true
-    } else if (this.speedX > 0) {
       this.flip = false
+    } else if (this.speedX > 0) {
+      this.flip = true
     }
 
-    console.log(this.flip)
 
   }
 
@@ -141,7 +140,7 @@ export default class Player {
     const dy = 10
     const angle = Math.atan2(dy, dx)
     if (this.game.debug) {
-      context.strokeStyle = '#000'
+      context.strokeStyle = 'white'
       context.strokeRect(this.x, this.y, this.width, this.height)
       context.lineWidth = 1
       context.beginPath()
@@ -175,6 +174,7 @@ export default class Player {
       this.height
     )
 
+    context.restore()
   }
 
 

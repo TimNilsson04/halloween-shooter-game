@@ -28,7 +28,7 @@ export default class UserInterface {
         this.game.height / 2 - 20
       )
       context.fillText(
-        `Your time: ${(this.game.gameTime * 0.001).toFixed(1)}s`,
+        `Your time: ${(this.game.gameTime * 0.001).toFixed(3)}s`,
         this.game.width / 2,
         this.game.height / 2 + 40
       )

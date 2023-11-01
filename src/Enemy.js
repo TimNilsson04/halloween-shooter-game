@@ -23,7 +23,7 @@ export default class Enemy {
 
     if (this.game.debug) {
       context.strokeRect(this.x, this.y, this.width, this.height)
-      context.fillStyle = 'black'
+      context.fillStyle = 'white'
       context.font = '20px Arial'
       context.fillText(this.lives, this.x, this.y - 5)
       context.font = '12px Arial'
