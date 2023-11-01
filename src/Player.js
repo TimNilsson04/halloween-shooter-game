@@ -7,7 +7,7 @@ export default class Player {
   constructor(game) {
     this.game = game
     this.width = 32
-    this.height = 32
+    this.height = 36
     this.x = this.game.width / 2 - this.width / 2
     this.y = this.game.height / 2 - this.height / 2
 
@@ -156,7 +156,7 @@ export default class Player {
     context.drawImage(
       this.image,
       this.frameX * this.width,
-      this.frameY * this.height - 30,
+      this.frameY * this.height - 36,
       this.width,
       this.height,
       this.flip ? this.x * -1 - this.width : this.x,
