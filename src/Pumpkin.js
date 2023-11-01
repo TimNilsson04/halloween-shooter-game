@@ -16,14 +16,14 @@ export default class Pumpkin extends Enemy {
     dead.src = deadChild
     this.dead = dead
 
-    this.frameX = 0
-    this.frameY = 1
-    this.maxFrame = 8
-    this.fps = 20
-    this.timer = 0
-    this.interval = 1000 / this.fps
+    this.frameXPumpkin = 0
+    this.frameYPumpkin = 1
+    this.maxFramePumpkin = 8
+    this.fpsPumpkin = 20
+    this.timerPumpkin = 0
+    this.intervalPumpkin = 1000 / this.fps
 
-    this.flip = false
+    this.flipPumpkin = false
   }
 
   update(player) {
@@ -38,18 +38,18 @@ export default class Pumpkin extends Enemy {
 
   draw(context) {
 
-    if (this.flip) {
+    if (this.flipPumpkin) {
       context.save()
       context.scale(-1, 1)
     }
 
     context.drawImage(
       this.dead,
-      this.frameX * this.width,
-      this.frameY * this.height - 34,
+      this.frameXPumpkin * this.width,
+      this.frameYPumpkin * this.height - 34,
       this.width,
       this.height,
-      this.flip ? this.x * -1 - this.width : this.x,
+      this.flipPumpkin ? this.x * -1 - this.width : this.x,
       this.y,
       this.width,
       this.height

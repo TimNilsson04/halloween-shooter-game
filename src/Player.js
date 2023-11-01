@@ -132,6 +132,8 @@ export default class Player {
       this.flip = false
     }
 
+    console.log(this.flip)
+
   }
 
   draw(context) {
