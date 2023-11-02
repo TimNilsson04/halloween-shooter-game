@@ -75,7 +75,11 @@ export default class Player {
       if (this.game.keys.includes('ArrowLeft')) {
         this.directionX = -1
         this.directionY = 0
-        this.game.player.shoot()
+        if (this.game.weaponUpgrade === 0) {
+          this.game.player.shoot()
+        } else if (this.game.weaponUpgrade === 1) {
+          this.game.player.shotgun()
+        }
       } else if (
         this.game.keys.includes('ArrowRight')
       ) {
@@ -98,6 +102,9 @@ export default class Player {
     } else {
       this.shootTimer += deltaTime
     }
+
+    // console.log(this.game.weaponUpgrade)
+    // console.log(this.game.dropTimer)
 
     if (this.x > this.game.width - 26 || this.x < 0) {
       this.x = this.speedX
@@ -136,9 +143,9 @@ export default class Player {
   }
 
   draw(context) {
-    const dx = 10
-    const dy = 10
-    const angle = Math.atan2(dy, dx)
+    // const dx = 10
+    // const dy = 10
+    // const angle = Math.atan2(dy, dx)
     if (this.game.debug) {
       context.strokeStyle = 'white'
       context.strokeRect(this.x, this.y, this.width, this.height)
@@ -187,23 +194,23 @@ export default class Player {
   }
 
 
-  shotgun(angle) {
-    console.log(angle)
+  shotgun() {
+
     this.projectiles.push(
       new Shotgun(
-        this.game, this.x + 12, this.y + 15, angle, this.directionX, this.directionY
+        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
       ),
       new Shotgun(
-        this.game, this.x + 12, this.y + 15, angle + 5, this.directionX, this.directionY
+        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
       ),
       new Shotgun(
-        this.game, this.x + 12, this.y + 15, angle - 5, this.directionX, this.directionY
+        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
       ),
       new Shotgun(
-        this.game, this.x + 12, this.y + 15, angle, this.directionX, this.directionY
+        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
       ),
       new Shotgun(
-        this.game, this.x + 12, this.y + 15, angle, this.directionX, this.directionY
+        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
       )
     )
   }
