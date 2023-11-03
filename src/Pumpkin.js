@@ -42,7 +42,7 @@ export default class Pumpkin extends Enemy {
       this.flipPumpkin = true
     }
 
-    console.log()
+
   }
 
   draw(context) {

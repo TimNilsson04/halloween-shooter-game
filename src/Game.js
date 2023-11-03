@@ -62,27 +62,27 @@ export default class Game {
       } else if (y === this.height) {
         x = Math.random() * this.width // if on bottom edge, randomize x position
       }
-      // if (Math.random() < 0.6) {
-      //   this.enemies.push(new Pumpkin(this, y, x))
-      // }
-      // if (Math.random() < 0.6) {
-      //   this.enemies.push(new Pumpkin(this, x, y))
-      // }
-      // if (Math.random() < 0.03) {
-      //   this.enemies.push(new Vampire(this, y, x))
-      // }
-      // if (Math.random() < 0.03) {
-      //   this.enemies.push(new Vampire(this, x, y))
-      // }
-      // if (Math.random() < 0.2) {
-      //   this.enemies.push(new Goblin(this, y, x))
-      // }
-      // if (Math.random() < 0.2) {
-      //   this.enemies.push(new Goblin(this, x, y))
-      // }
-      if (Math.random() < 0.5) {
-        this.enemies.push(new WeaponDrop(this, dropX, dropY))
+      if (Math.random() < 0.6) {
+        this.enemies.push(new Pumpkin(this, y, x))
       }
+      if (Math.random() < 0.6) {
+        this.enemies.push(new Pumpkin(this, x, y))
+      }
+      if (Math.random() < 0.03) {
+        this.enemies.push(new Vampire(this, y, x))
+      }
+      if (Math.random() < 0.03) {
+        this.enemies.push(new Vampire(this, x, y))
+      }
+      if (Math.random() < 0.2) {
+        this.enemies.push(new Goblin(this, y, x))
+      }
+      if (Math.random() < 0.2) {
+        this.enemies.push(new Goblin(this, x, y))
+      }
+      // if (Math.random() < 0.5) {
+      //   this.enemies.push(new WeaponDrop(this, dropX, dropY))
+      // }
       this.enemyTimer = 0
     } else {
       this.enemyTimer += deltaTime

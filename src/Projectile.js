@@ -28,7 +28,7 @@ export default class Projectile {
     // context.translate(this.x, this.y)
     // context.rotate(this.angle)
 
-    context.fillStyle = '#a702ed'
+    context.fillStyle = '#b40afc'
     context.fillRect(this.x, this.y, this.width, this.height)
     // context.restore()
 
