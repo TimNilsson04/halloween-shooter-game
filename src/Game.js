@@ -80,9 +80,9 @@ export default class Game {
       if (Math.random() < 0.2) {
         this.enemies.push(new Goblin(this, x, y))
       }
-      // if (Math.random() < 0.5) {
-      //   this.enemies.push(new WeaponDrop(this, dropX, dropY))
-      // }
+      if (Math.random() < 0.005) {
+        this.enemies.push(new WeaponDrop(this, dropX, dropY))
+      }
       this.enemyTimer = 0
     } else {
       this.enemyTimer += deltaTime
@@ -100,14 +100,14 @@ export default class Game {
         }
         if (enemy.type === 'weaponDrop') {
           enemy.markedForDeletion = true
-          if (this.dropTimer < this.dropInterval) {
-            this.weaponUpgrade = 1
-            // this.dropTimer = 0
-            for (let i = 0; i < 5000; i++) {
+          this.player.lives++
+          // if (this.dropTimer < this.dropInterval) {
+          //   this.weaponUpgrade = 1
+          //   // this.dropTimer = 0
+          //   // for (let i = 0; i < 5000; i++) {
 
-            }
-          }
-          // } else {
+
+          // }
 
         }
       }
