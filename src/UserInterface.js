@@ -37,7 +37,7 @@ export default class UserInterface {
     if (!this.game.gameStart) {
       context.fillStyle = "black"
       context.fillRect(this.game.width / 2 - 600, this.game.height / 2 - 300, 1200, 600)
-      context.fillStyle = "white"
+      context.fillStyle = "#970AFC"
       context.shadowColor = 'black'
       context.fillText(
         `William Afton's Nightmare`,
@@ -76,7 +76,7 @@ export default class UserInterface {
       )
       context.fillStyle = "#0f0"
       context.fillRect(this.game.width / 2 - 290, this.game.height / 2 + 56, 32, 32)
-      context.fillStyle = "white"
+      context.fillStyle = "#970AFC"
       context.fillText(
         `Press f to start`,
         this.game.width / 2 + 420,
