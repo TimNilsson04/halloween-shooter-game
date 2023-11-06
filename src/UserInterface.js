@@ -34,6 +34,56 @@ export default class UserInterface {
       )
     }
 
+    if (!this.game.gameStart) {
+      context.fillStyle = "black"
+      context.fillRect(this.game.width / 2 - 600, this.game.height / 2 - 300, 1200, 600)
+      context.fillStyle = "white"
+      context.shadowColor = 'black'
+      context.fillText(
+        `William Afton's Nightmare`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 - 250,
+      )
+      context.fillText(
+        `Instructions:`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 - 200,
+      )
+      context.fillText(
+        `Use the w, a ,s ,d keys to move`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 - 150,
+      )
+      context.fillText(
+        `Use the arrow keys to shoot`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 - 100,
+      )
+      context.fillText(
+        `This is you =>`,
+        this.game.width / 2 - 200,
+        this.game.height / 2 + 10,
+      )
+      context.fillText(
+        `These are the 1ups    =>`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 + 80,
+      )
+      context.fillText(
+        `Good luck have fun  😊`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 + 130,
+      )
+      context.fillStyle = "#0f0"
+      context.fillRect(this.game.width / 2 - 290, this.game.height / 2 + 56, 32, 32)
+      context.fillStyle = "white"
+      context.fillText(
+        `Press f to start`,
+        this.game.width / 2 + 420,
+        this.game.height / 2 + 280,
+      )
+    }
+
     // debug
     if (this.game.debug) {
       context.font = `15px Arial`

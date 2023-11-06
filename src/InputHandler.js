@@ -29,6 +29,10 @@ export default class InputHandler {
       if (event.key === 'p') {
         this.game.debug = !this.game.debug
       }
+
+      if (event.key === 'f') {
+        this.game.gameStart = true
+      }
     })
 
     window.addEventListener('keyup', (event) => {

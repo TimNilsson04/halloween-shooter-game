@@ -19,6 +19,7 @@ export default class Game {
     this.keys = []
     this.enemies = []
     this.gameOver = false
+    this.gameStart = false
     this.gravity = 1
     this.debug = false
     this.gameTime = 0
@@ -35,11 +36,13 @@ export default class Game {
   }
 
   update(deltaTime) {
+    if (this.gameOver || !this.gameStart) {
+      return
+
+    }
     if (!this.gameOver) {
       this.gameTime += deltaTime
-    }
-    if (this.gameOver) {
-      return
+
     }
 
 
