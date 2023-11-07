@@ -130,6 +130,7 @@ export default class Game {
 
 
     if (this.gameOver) {
+      this.input.sound.sound.currentTime = 10000000
       this.sound.playEndingSound()
     }
   }

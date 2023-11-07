@@ -37,11 +37,9 @@ export default class InputHandler {
         this.game.gameStart = true
         this.sound.playSound()
       }
-      if (this.game.gameOver) {
-        this.sound.sound.currentTime = 100000000
-      }
 
     })
+
 
     window.addEventListener('keyup', (event) => {
       if (this.game.keys.indexOf(event.key) > -1) {
