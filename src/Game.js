@@ -39,9 +39,7 @@ export default class Game {
   }
 
   update(deltaTime) {
-    if (!this.gameStart) {
-      this.sound.playSound()
-    }
+
     if (this.gameOver || !this.gameStart) {
       return
     }
@@ -132,7 +130,6 @@ export default class Game {
 
 
     if (this.gameOver) {
-      this.sound.sound.currentTime = 1000000
       this.sound.playEndingSound()
     }
   }

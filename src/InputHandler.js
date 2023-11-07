@@ -1,6 +1,9 @@
+import Sound from './Sound.js'
+
 export default class InputHandler {
   constructor(game) {
     this.game = game
+    this.sound = new Sound(this.game)
 
 
     window.addEventListener('keydown', (event) => {
@@ -32,7 +35,12 @@ export default class InputHandler {
 
       if (event.key === 'f') {
         this.game.gameStart = true
+        this.sound.playSound()
       }
+      if (this.game.gameOver) {
+        this.sound.sound.currentTime = 100000000
+      }
+
     })
 
     window.addEventListener('keyup', (event) => {
