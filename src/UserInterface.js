@@ -1,9 +1,12 @@
+
+
 export default class UserInterface {
   constructor(game) {
     this.game = game
     this.fontSize = 25
     this.fontFamily = 'Arial'
     this.color = 'white'
+
   }
 
   draw(context) {
@@ -65,7 +68,7 @@ export default class UserInterface {
         this.game.height / 2 + 10,
       )
       context.fillText(
-        `These are the 1ups    =>`,
+        `These are the 1ups    =>       Tip don't shoot it 😉`,
         this.game.width / 2 - 570,
         this.game.height / 2 + 80,
       )
@@ -80,7 +83,7 @@ export default class UserInterface {
         this.game.height / 2 + 180,
       )
       context.fillText(
-        `Good luck have fun  😊`,
+        `Good luck have fun  😊 One more tip, turn up the volume`,
         this.game.width / 2 - 570,
         this.game.height / 2 + 230,
       )

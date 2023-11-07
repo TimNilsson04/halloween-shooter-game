@@ -6,6 +6,7 @@ import Vampire from './Vampire.js'
 import Goblin from './Goblin.js'
 import Background from './Background.js'
 import WeaponDrop from './WeaponDrop.js'
+import Sound from './Sound.js'
 
 export default class Game {
   constructor(width, height, canvasPosition) {
@@ -33,16 +34,21 @@ export default class Game {
     this.weaponUpgrade = 0
 
     this.player = new Player(this)
+
+    this.sound = new Sound(this.game)
+
   }
 
   update(deltaTime) {
+    if (!this.gameStart) {
+      this.sound.playSound()
+    }
     if (this.gameOver || !this.gameStart) {
       return
     }
     if (!this.gameOver) {
       this.gameTime += deltaTime
     }
-
 
     // this.enemyInterval = Math.pow()
 
@@ -112,7 +118,6 @@ export default class Game {
 
         }
       }
-      console.log(this.dropTimer)
       this.player.projectiles.forEach((projectile) => {
         if (this.checkCollision(projectile, enemy)) {
           if (enemy.lives > 1) {
@@ -126,6 +131,11 @@ export default class Game {
     })
     this.enemies = this.enemies.filter((enemy) => !enemy.markedForDeletion)
 
+
+    if (this.gameOver) {
+      this.sound.sound.currentTime = 1000000
+      this.sound.playEndingSound()
+    }
   }
 
 
