@@ -4,6 +4,7 @@ import Shotgun from './Shotgun.js'
 import playerArt from './assets/player/playerArt.webp'
 import playerArtBright from './assets/player/playerArtBright.webp'
 import playerArtSprite from './assets/player/playerArtSprite.png'
+import playerArtSprite2 from './assets/player/playerArtSprite2.png'
 
 
 export default class Player {
@@ -24,17 +25,17 @@ export default class Player {
     this.maxSpeed = 6
 
     const image = new Image()
-    image.src = playerArtSprite
+    image.src = playerArtSprite2
     this.image = image
 
     this.frameX = 0
     this.frameY = 1
-    this.maxFrame = 2
+    this.maxFrame = 4
     this.animationFps = 16
     this.animationTimer = 0
     this.animationInterval = 1000 / this.animationFps
-    this.idleFrames = 2
-    this.runFrames = 2
+    this.idleFrames = 4
+    this.runFrames = 4
 
     this.flip = false
 
