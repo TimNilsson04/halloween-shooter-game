@@ -36,7 +36,6 @@ export default class Game {
     this.player = new Player(this)
 
     this.sound = new Sound(this.game)
-
   }
 
   update(deltaTime) {
