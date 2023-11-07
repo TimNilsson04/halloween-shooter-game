@@ -28,5 +28,6 @@ export default class Shoot extends Projectile {
             this.markedForDeletion = true
         }
 
+
     }
 }
