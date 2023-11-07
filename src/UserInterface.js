@@ -50,7 +50,7 @@ export default class UserInterface {
         this.game.height / 2 - 200,
       )
       context.fillText(
-        `Use the w, a ,s ,d keys to move`,
+        `Use the |W| |A| |S| |D| keys to move`,
         this.game.width / 2 - 570,
         this.game.height / 2 - 150,
       )
@@ -70,9 +70,19 @@ export default class UserInterface {
         this.game.height / 2 + 80,
       )
       context.fillText(
-        `Good luck have fun  😊`,
+        `You can also teleport by going into the right of the screen and the bottom`,
         this.game.width / 2 - 570,
         this.game.height / 2 + 130,
+      )
+      context.fillText(
+        `This is a fast paced game so be ready!`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 + 180,
+      )
+      context.fillText(
+        `Good luck have fun  😊`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 + 230,
       )
       context.fillStyle = "#0f0"
       context.fillRect(this.game.width / 2 - 290, this.game.height / 2 + 56, 32, 32)
