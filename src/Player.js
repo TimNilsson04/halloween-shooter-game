@@ -2,6 +2,9 @@ import Projectile from './Projectile.js'
 import Shoot from './Shoot.js'
 import Shotgun from './Shotgun.js'
 import playerArt from './assets/player/playerArt.webp'
+import playerArtBright from './assets/player/playerArtBright.webp'
+import playerArtSprite from './assets/player/playerArtSprite.png'
+
 
 export default class Player {
   constructor(game) {
@@ -21,15 +24,17 @@ export default class Player {
     this.maxSpeed = 6
 
     const image = new Image()
-    image.src = playerArt
+    image.src = playerArtSprite
     this.image = image
 
     this.frameX = 0
     this.frameY = 1
-    this.maxFrame = 8
-    this.fps = 20
-    this.timer = 0
-    this.interval = 1000 / this.fps
+    this.maxFrame = 2
+    this.animationFps = 16
+    this.animationTimer = 0
+    this.animationInterval = 1000 / this.animationFps
+    this.idleFrames = 2
+    this.runFrames = 2
 
     this.flip = false
 
@@ -106,13 +111,17 @@ export default class Player {
     // console.log(this.game.weaponUpgrade)
     // console.log(this.game.dropTimer)
 
-    if (this.x > this.game.width - 26 || this.x < 0) {
+    if (this.x > this.game.width - 26) {
       this.x = this.speedX
-
     }
-
-    if (this.y > this.game.height - 26 || this.y < 0) {
+    if (this.x < 0) {
+      this.x = this.game.width - 20
+    }
+    if (this.y > this.game.height - 26) {
       this.y = this.speedY;
+    }
+    if (this.y < 0) {
+      this.y = this.game.height - 20
     }
 
     this.y += this.speedY
@@ -133,12 +142,27 @@ export default class Player {
       (projectile) => !projectile.markedForDeletion
     )
 
+    if (this.speedX !== 0) {
+      this.frameY = 1
+      this.maxFrame = this.runFrames
+    }
+
     if (this.speedX < 0) {
       this.flip = false
     } else if (this.speedX > 0) {
       this.flip = true
     }
 
+    if (this.animationTimer > this.animationInterval) {
+      this.frameX++
+      this.animationTimer = 0
+    } else {
+      this.animationTimer += deltaTime
+    }
+
+    if (this.frameX >= this.maxFrame) {
+      this.frameX = 0
+    }
 
   }
 
