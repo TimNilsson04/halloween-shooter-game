@@ -38,11 +38,9 @@ export default class Game {
   update(deltaTime) {
     if (this.gameOver || !this.gameStart) {
       return
-
     }
     if (!this.gameOver) {
       this.gameTime += deltaTime
-
     }
 
 
