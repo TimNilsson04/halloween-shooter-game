@@ -39,7 +39,6 @@ export default class Game {
   }
 
   update(deltaTime) {
-
     if (this.gameOver || !this.gameStart) {
       return
     }
@@ -128,9 +127,16 @@ export default class Game {
     })
     this.enemies = this.enemies.filter((enemy) => !enemy.markedForDeletion)
 
+    if (this.input.sound.sound.currentTime === 180) {
+      this.input.sound.playSound()
+    }
 
     if (this.gameOver) {
-      this.input.sound.sound.currentTime = 10000000
+      if (this.input.random <= 0.33) {
+        this.input.sound.sound.currentTime = 500
+      } else if (this.input.random > 0.33 && this.input.random <= 0.66) {
+        this.input.sound.SexBomb.currentTime = 500
+      } else { this.input.sound.MarkFnaf1.currentTime = 500 }
       this.sound.playEndingSound()
     }
   }

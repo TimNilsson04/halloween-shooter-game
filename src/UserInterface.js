@@ -35,6 +35,11 @@ export default class UserInterface {
         this.game.width / 2,
         this.game.height / 2 + 40
       )
+      context.fillText(
+        `Press r to restart`,
+        this.game.width / 2,
+        this.game.height / 2 + 100
+      )
     }
 
     if (!this.game.gameStart) {

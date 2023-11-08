@@ -1,10 +1,11 @@
 import Projectile from "./Projectile"
 
+
 export default class Shoot extends Projectile {
     constructor(game, x, y, directionX, directionY) {
         super(game)
         this.game = game
-        this.width = 7
+        this.width = 14
         this.height = 7
         this.x = x
         this.y = y
@@ -14,6 +15,7 @@ export default class Shoot extends Projectile {
         this.speed = 10
         this.damage = 1
         this.markedForDeletion = false
+
     }
 
     update(deltaTime) {
@@ -28,6 +30,11 @@ export default class Shoot extends Projectile {
             this.markedForDeletion = true
         }
 
+        // if (this.x < 0) {
+        //     this.flipKnife = false
+        // } else if (this.y > 0) {
+        //     this.flipKnife = true
+        // }
 
     }
 }

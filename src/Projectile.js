@@ -10,35 +10,16 @@ export default class Projectile {
 
     this.markedForDeletion = false
 
-    const image = new Image()
-    image.src = knife
-    this.image = image
+    const knifeSprite = new Image()
+    knifeSprite.src = knife
+    this.knifeSprite = knifeSprite
 
-    this.frameXKnife = 0
-    this.frameYKnife = 1
-    this.animationIntervalKnife = 1000 / this.animationFps
-
-    this.flip = false
-
+    this.flipKnife = false
   }
 
   update(deltaTime) {
 
 
-
-    this.x += this.speed * this.directionX
-    this.y += this.speed * this.directionY
-    if (this.x > this.game.width + this.game.x) {
-      this.markedForDeletion = true
-    } else if (this.x < this.game.x) {
-      this.markedForDeletion = true
-    }
-
-    if (this.directionX < 0) {
-      this.flip = false
-    } else if (this.directionY > 0) {
-      this.flip = true
-    }
 
   }
 
@@ -47,25 +28,22 @@ export default class Projectile {
     // context.translate(this.x, this.y)
     // context.rotate(this.angle)
 
-    context.fillStyle = '#b40afc'
-    context.fillRect(this.x, this.y, this.width, this.height)
+    // context.fillStyle = '#b40afc'
+    // context.fillRect(this.x, this.y, this.width, this.height)
     // context.restore()
 
-    if (this.flip) {
+    if (this.flipKnife) {
       context.save()
       context.scale(-1, 1)
     }
 
     context.drawImage(
-      this.image,
-      this.frameXKnife * this.width,
-      this.frameYKnife * this.height,
-      this.width,
-      this.height,
-      this.flip ? this.x * -1 - this.width : this.x,
+      this.knifeSprite,
+      this.x,
       this.y,
       this.width,
-      this.height
+      this.height,
+      // this.flipKnife ? this.x * -1 - this.width : this.x,
     )
 
     context.restore()
