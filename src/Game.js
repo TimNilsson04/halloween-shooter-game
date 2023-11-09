@@ -91,12 +91,14 @@ export default class Game {
       }
       this.enemyTimer = 0
     } else {
-      if (this.round > 7) {
-        this.enemyTimer += Math.pow(this.round + 1, 2) / 45
-      } else if (this.round > 5) {
-        this.enemyTimer += Math.pow(this.round + 1, 2) / 30
-      } else if (this.round > 3) {
-        this.enemyTimer += Math.pow(this.round + 1, 2) / 15
+      if (this.round >= 10) {
+        this.enemyTimer += Math.pow(this.round + 1, 2) / 100
+      } else if (this.round >= 7) {
+        this.enemyTimer += Math.pow(this.round + 1, 2) / 65
+      } else if (this.round >= 5) {
+        this.enemyTimer += Math.pow(this.round + 1, 2) / 40
+      } else if (this.round >= 3) {
+        this.enemyTimer += Math.pow(this.round + 1, 2) / 20
       } else {
         this.enemyTimer += Math.pow(this.round + 1, 2) / 5
       }

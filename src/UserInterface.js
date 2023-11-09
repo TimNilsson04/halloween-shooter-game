@@ -73,12 +73,12 @@ export default class UserInterface {
         this.game.height / 2 + 10,
       )
       context.fillText(
-        `These are the 1ups    =>       Tip don't shoot it 😉`,
+        `These are the 1ups    =>`,
         this.game.width / 2 - 570,
         this.game.height / 2 + 80,
       )
       context.fillText(
-        `You can also teleport by going into the right of the screen and the bottom`,
+        `You can also teleport by going into the walls 😉`,
         this.game.width / 2 - 570,
         this.game.height / 2 + 130,
       )
