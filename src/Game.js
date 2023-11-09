@@ -26,8 +26,8 @@ export default class Game {
     this.gameTime = 0
     this.enemies = []
     this.enemyTimer = 0
-    this.enemyInterval = 1000
-    this.round = 1
+    this.enemyInterval = 100
+    this.round = 0
 
     this.dropTimer = 0
     this.dropInterval = 5000
@@ -49,9 +49,9 @@ export default class Game {
       this.gameTime += deltaTime
     }
 
-    // this.enemyInterval = Math.pow()
 
 
+    this.round = 1 + Math.floor(this.gameTime / 25000)
 
     if (this.enemyTimer > this.enemyInterval) {
       let x = Math.random() < 0.5 ? 0 : this.width // spawn on left or right edge
@@ -86,12 +86,20 @@ export default class Game {
       if (Math.random() < 0.2) {
         this.enemies.push(new Goblin(this, x, y))
       }
-      if (Math.random() < 0.005) {
+      if (Math.random() < 0.009) {
         this.enemies.push(new WeaponDrop(this, dropX, dropY))
       }
       this.enemyTimer = 0
     } else {
-      this.enemyTimer += deltaTime
+      if (this.round > 7) {
+        this.enemyTimer += Math.pow(this.round + 1, 2) / 45
+      } else if (this.round > 5) {
+        this.enemyTimer += Math.pow(this.round + 1, 2) / 30
+      } else if (this.round > 3) {
+        this.enemyTimer += Math.pow(this.round + 1, 2) / 15
+      } else {
+        this.enemyTimer += Math.pow(this.round + 1, 2) / 5
+      }
     }
 
 
@@ -119,7 +127,10 @@ export default class Game {
       }
       this.player.projectiles.forEach((projectile) => {
         if (this.checkCollision(projectile, enemy)) {
-          if (enemy.lives > 1) {
+          if (enemy.type === 'weaponDrop') {
+            return
+          }
+          else if (enemy.lives > 1) {
             enemy.lives -= projectile.damage
           } else {
             enemy.markedForDeletion = true
@@ -132,18 +143,22 @@ export default class Game {
 
 
 
-    if (this.input.sound.sound.currentTime > 180 || this.input.sound.SexBomb.currentTime > 208 || this.input.sound.MarkFnaf1.currentTime > 218) {
+    if (this.input.sound.sound.currentTime > 180 || this.input.sound.SexBomb.currentTime > 208 || this.input.sound.MarkFnaf1.currentTime > 218 || this.input.sound.MarkFnaf2.currentTime > 170) {
       this.input.sound.sound.pause()
       this.input.sound.SexBomb.pause()
       this.input.sound.MarkFnaf1.pause()
+      this.input.sound.MarkFnaf2.pause()
       this.input.random = Math.random()
       // console.log(this.input.random)
-      if (this.input.random <= 0.33) {
+      if (this.input.random <= 0.25) {
         this.input.sound.playSound()
-      } else if (this.input.random > 0.33 && this.input.random <= 0.66) {
+      } else if (this.input.random > 0.25 && this.input.random <= 0.5) {
         this.input.sound.playSexBomb()
       }
-      else if (this.input.random > 0.66) {
+      else if (this.input.random > 0.5 && this.input.random <= 0.75) {
+        this.input.sound.playMarkFnaf1()
+      }
+      else if (this.input.random > 0.75) {
         this.input.sound.playMarkFnaf1()
       }
     }
@@ -151,12 +166,16 @@ export default class Game {
     // console.log(this.input.sound.sound.currentTime)
 
     if (this.gameOver) {
-      if (this.input.random <= 0.33) {
+      if (this.input.random <= 0.25) {
         this.input.sound.sound.pause()
-      } else if (this.input.random > 0.33 && this.input.random <= 0.66) {
+      } else if (this.input.random > 0.25 && this.input.random <= 0.5) {
         this.input.sound.SexBomb.pause()
-      } else if (this.input.random > 0.66) {
+      }
+      else if (this.input.random > 0.5 && this.input.random <= 0.75) {
         this.input.sound.MarkFnaf1.pause()
+      }
+      else if (this.input.random > 0.75) {
+        this.input.sound.MarkFnaf2.pause()
       }
       this.sound.playEndingSound()
     }

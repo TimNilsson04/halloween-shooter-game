@@ -2,6 +2,7 @@ import MarkiplierDie from './assets/sounds/MarkiplierDie.mp3'
 import powerOutage from './assets/sounds/powerOutage.mp3'
 import MarkFnaf from './assets/sounds/MarkFnaf.mp3'
 import SexBomb from './assets/sounds/SexBomb.mp3'
+import MarkFnaf2 from './assets/sounds/MarkFnaf2.mp3'
 
 export default class Sound {
   constructor(game) {
@@ -21,6 +22,10 @@ export default class Sound {
     const mark = new Audio()
     mark.src = MarkFnaf
     this.MarkFnaf1 = mark
+
+    const mark2 = new Audio()
+    mark2.src = MarkFnaf2
+    this.MarkFnaf2 = mark2
   }
 
   playSound() {
@@ -38,5 +43,9 @@ export default class Sound {
   playMarkFnaf1() {
     this.MarkFnaf1.currentTime = 0
     this.MarkFnaf1.play()
+  }
+  playMarkFnaf2() {
+    this.MarkFnaf2.currentTime = 0
+    this.MarkFnaf2.play()
   }
 }

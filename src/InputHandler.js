@@ -37,10 +37,17 @@ export default class InputHandler {
       if (event.key === 'f') {
         this.game.gameStart = true
         this.random = Math.random()
-        if (this.random <= 0.33) {
+        if (this.random <= 0.25) {
           this.sound.playSound()
-        } else if (this.random > 0.33 && this.random <= 0.66) { this.sound.playSexBomb() }
-        else { this.sound.playMarkFnaf1() }
+        } else if (this.random > 0.25 && this.random <= 0.5) {
+          this.sound.playSexBomb()
+        }
+        else if (this.random > 0.5 && this.random <= 0.75) {
+          this.sound.playMarkFnaf1()
+        }
+        else if (this.random > 0.75) {
+          this.sound.playMarkFnaf1()
+        }
       }
 
       if (event.key === 'r') {
@@ -54,12 +61,15 @@ export default class InputHandler {
         this.game.gameTime = 0
         this.game.sound.soundEnding.currentTime = 99
         this.random = Math.random()
-        if (this.random <= 0.33) {
+        if (this.random <= 0.25) {
           this.sound.playSound()
-        } else if (this.random > 0.33 && this.random <= 0.66) {
+        } else if (this.random > 0.25 && this.random <= 0.5) {
           this.sound.playSexBomb()
         }
-        else if (this.random > 0.66) {
+        else if (this.random > 0.5 && this.random <= 0.75) {
+          this.sound.playMarkFnaf1()
+        }
+        else if (this.random > 0.75) {
           this.sound.playMarkFnaf1()
         }
       }
