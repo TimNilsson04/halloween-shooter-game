@@ -39,7 +39,8 @@ export default class InputHandler {
         this.random = Math.random()
         if (this.random <= 0.33) {
           this.sound.playSound()
-        } else if (this.random > 0.33 && this.random <= 0.66) { this.sound.playSexBomb() } else { this.sound.playMarkFnaf1() }
+        } else if (this.random > 0.33 && this.random <= 0.66) { this.sound.playSexBomb() }
+        else { this.sound.playMarkFnaf1() }
       }
 
       if (event.key === 'r') {
@@ -54,9 +55,13 @@ export default class InputHandler {
         this.game.sound.soundEnding.currentTime = 99
         this.random = Math.random()
         if (this.random <= 0.33) {
-          this.sound.playSound(); console.log("die")
-        } else if (this.random > 0.33 && this.random <= 0.66) { this.sound.playSexBomb(); console.log("sex") } else { this.sound.playMarkFnaf1(); console.log("fnaf1") }
-
+          this.sound.playSound()
+        } else if (this.random > 0.33 && this.random <= 0.66) {
+          this.sound.playSexBomb()
+        }
+        else if (this.random > 0.66) {
+          this.sound.playMarkFnaf1()
+        }
       }
 
     })

@@ -33,6 +33,9 @@ export default class Game {
     this.dropInterval = 5000
     this.weaponUpgrade = 0
 
+    this.song;
+    this.newRandom;
+
     this.player = new Player(this)
 
     this.sound = new Sound(this.game)
@@ -127,16 +130,34 @@ export default class Game {
     })
     this.enemies = this.enemies.filter((enemy) => !enemy.markedForDeletion)
 
-    if (this.input.sound.sound.currentTime === 180) {
-      this.input.sound.playSound()
+
+
+    if (this.input.sound.sound.currentTime > 180 || this.input.sound.SexBomb.currentTime > 208 || this.input.sound.MarkFnaf1.currentTime > 218) {
+      this.input.sound.sound.pause()
+      this.input.sound.SexBomb.pause()
+      this.input.sound.MarkFnaf1.pause()
+      this.input.random = Math.random()
+      // console.log(this.input.random)
+      if (this.input.random <= 0.33) {
+        this.input.sound.playSound()
+      } else if (this.input.random > 0.33 && this.input.random <= 0.66) {
+        this.input.sound.playSexBomb()
+      }
+      else if (this.input.random > 0.66) {
+        this.input.sound.playMarkFnaf1()
+      }
     }
+
+    // console.log(this.input.sound.sound.currentTime)
 
     if (this.gameOver) {
       if (this.input.random <= 0.33) {
-        this.input.sound.sound.currentTime = 500
+        this.input.sound.sound.pause()
       } else if (this.input.random > 0.33 && this.input.random <= 0.66) {
-        this.input.sound.SexBomb.currentTime = 500
-      } else { this.input.sound.MarkFnaf1.currentTime = 500 }
+        this.input.sound.SexBomb.pause()
+      } else if (this.input.random > 0.66) {
+        this.input.sound.MarkFnaf1.pause()
+      }
       this.sound.playEndingSound()
     }
   }
