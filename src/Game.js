@@ -168,17 +168,10 @@ export default class Game {
     // console.log(this.input.sound.sound.currentTime)
 
     if (this.gameOver) {
-      if (this.input.random <= 0.25) {
-        this.input.sound.sound.pause()
-      } else if (this.input.random > 0.25 && this.input.random <= 0.5) {
-        this.input.sound.SexBomb.pause()
-      }
-      else if (this.input.random > 0.5 && this.input.random <= 0.75) {
-        this.input.sound.MarkFnaf1.pause()
-      }
-      else if (this.input.random > 0.75) {
-        this.input.sound.MarkFnaf2.pause()
-      }
+      this.input.sound.sound.pause()
+      this.input.sound.SexBomb.pause()
+      this.input.sound.MarkFnaf1.pause()
+      this.input.sound.MarkFnaf2.pause()
       this.sound.playEndingSound()
     }
   }
