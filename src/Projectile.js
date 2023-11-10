@@ -14,7 +14,9 @@ export default class Projectile {
     knifeSprite.src = knife
     this.knifeSprite = knifeSprite
 
-    this.flipKnife = false
+    this.flipKnifeX = false
+    this.flipKnifeY = false
+
   }
 
   update(deltaTime) {

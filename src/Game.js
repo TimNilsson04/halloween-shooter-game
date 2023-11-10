@@ -7,6 +7,7 @@ import Goblin from './Goblin.js'
 import Background from './Background.js'
 import WeaponDrop from './WeaponDrop.js'
 import Sound from './Sound.js'
+import OneUp from './OneUp.js'
 
 export default class Game {
   constructor(width, height, canvasPosition) {
@@ -35,6 +36,9 @@ export default class Game {
 
     this.song;
     this.newRandom;
+
+    this.weaponTimer
+
 
     this.player = new Player(this)
 
@@ -87,6 +91,11 @@ export default class Game {
         this.enemies.push(new Goblin(this, x, y))
       }
       if (Math.random() < 0.009) {
+        this.enemies.push(new OneUp(this, dropX, dropY))
+      }
+      if (Math.random() < 0.02) {
+        dropX = Math.floor(Math.random() * (1440 - 1) + 1)
+        dropY = Math.floor(Math.random() * (800 - 1) + 1)
         this.enemies.push(new WeaponDrop(this, dropX, dropY))
       }
       this.enemyTimer = 0
@@ -107,29 +116,32 @@ export default class Game {
 
     this.player.update(deltaTime)
 
+    if (this.weaponTimer > this.gameTime) {
+      this.weaponUpgrade = 1
+    } else {
+      this.weaponUpgrade = 0
+    }
+
     this.enemies.forEach((enemy) => {
       enemy.update(this.player)
       if (this.checkCollision(this.player, enemy)) {
-        if (enemy.type !== 'weaponDrop') {
+        if (enemy.type !== 'oneup' && enemy.type !== 'weapondrop') {
           this.player.lives--
           enemy.markedForDeletion = true
         }
-        if (enemy.type === 'weaponDrop') {
+        if (enemy.type === 'oneup') {
           enemy.markedForDeletion = true
           this.player.lives++
-          // if (this.dropTimer < this.dropInterval) {
-          //   this.weaponUpgrade = 1
-          //   // this.dropTimer = 0
-          //   // for (let i = 0; i < 5000; i++) {
-
-
-          // }
-
+        }
+        if (enemy.type === 'weapondrop') {
+          enemy.markedForDeletion = true
+          // this.player.lives += 0
+          this.weaponTimer = this.gameTime + 20000
         }
       }
       this.player.projectiles.forEach((projectile) => {
         if (this.checkCollision(projectile, enemy)) {
-          if (enemy.type === 'weaponDrop') {
+          if (enemy.type === 'oneup' || enemy.type === 'weapondrop') {
             return
           }
           else if (enemy.lives > 1) {
@@ -145,23 +157,23 @@ export default class Game {
 
 
 
-    if (this.input.sound.sound.currentTime > 180 || this.input.sound.SexBomb.currentTime > 208 || this.input.sound.MarkFnaf1.currentTime > 218 || this.input.sound.MarkFnaf2.currentTime > 170) {
+    if (this.input.sound.sound.currentTime > 180 || this.input.sound.MarkFnaf1.currentTime > 168 || this.input.sound.MarkFnaf2.currentTime > 170 || this.input.sound.MarkFnaf4.currentTime > 174) {
       this.input.sound.sound.pause()
-      this.input.sound.SexBomb.pause()
       this.input.sound.MarkFnaf1.pause()
       this.input.sound.MarkFnaf2.pause()
+      this.input.sound.MarkFnaf4.pause()
       this.input.random = Math.random()
       // console.log(this.input.random)
       if (this.input.random <= 0.25) {
         this.input.sound.playSound()
       } else if (this.input.random > 0.25 && this.input.random <= 0.5) {
-        this.input.sound.playSexBomb()
+        this.input.sound.playMarkFnaf1()
       }
       else if (this.input.random > 0.5 && this.input.random <= 0.75) {
-        this.input.sound.playMarkFnaf1()
+        this.input.sound.playMarkFnaf2()
       }
       else if (this.input.random > 0.75) {
-        this.input.sound.playMarkFnaf1()
+        this.input.sound.playMarkFnaf4()
       }
     }
 
@@ -169,8 +181,8 @@ export default class Game {
 
     if (this.gameOver) {
       this.input.sound.sound.pause()
-      this.input.sound.SexBomb.pause()
       this.input.sound.MarkFnaf1.pause()
+      this.input.sound.MarkFnaf4.pause()
       this.input.sound.MarkFnaf2.pause()
       this.sound.playEndingSound()
     }

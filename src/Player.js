@@ -81,28 +81,24 @@ export default class Player {
       if (this.game.keys.includes('ArrowLeft')) {
         this.directionX = -1
         this.directionY = 0
-        if (this.game.weaponUpgrade === 0) {
-          this.game.player.shoot()
-        } else if (this.game.weaponUpgrade === 1) {
-          this.game.player.shotgun()
-        }
+        this.shoot()
       } else if (
         this.game.keys.includes('ArrowRight')
       ) {
         this.directionX = 1
         this.directionY = 0
-        this.game.player.shoot()
+        this.shoot()
       } else if (
         this.game.keys.includes('ArrowUp')) {
         this.directionY = -1
         this.directionX = 0
-        this.game.player.shoot()
+        this.shoot()
       } else if (
         this.game.keys.includes('ArrowDown')
       ) {
         this.directionY = 1
         this.directionX = 0
-        this.game.player.shoot()
+        this.shoot()
       }
       this.shootTimer = 0
     } else {
@@ -211,33 +207,43 @@ export default class Player {
 
 
   shoot() {
-    this.projectiles.push(
-      new Shoot(
-        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
-      )
-    )
+    if (this.game.weaponUpgrade === 0) {
+      this.projectiles.push(
+        new Shoot(
+          this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
+        ))
+    } else if (this.game.weaponUpgrade === 1) {
+      this.shotgun()
+    }
   }
 
 
   shotgun() {
-
-    this.projectiles.push(
-      new Shotgun(
-        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
-      ),
-      new Shotgun(
-        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
-      ),
-      new Shotgun(
-        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
-      ),
-      new Shotgun(
-        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
-      ),
-      new Shotgun(
-        this.game, this.x + 12, this.y + 15, this.directionX, this.directionY
+    if (this.directionX === 1 || this.directionX === -1) {
+      this.projectiles.push(
+        new Shotgun(
+          this.game, this.x + 15, this.y + 25, this.directionX, this.directionY
+        ),
+        new Shotgun(
+          this.game, this.x + 15, this.y + 15, this.directionX, this.directionY
+        ),
+        new Shotgun(
+          this.game, this.x + 15, this.y + 5, this.directionX, this.directionY
+        )
       )
-    )
+    } else {
+      this.projectiles.push(
+        new Shotgun(
+          this.game, this.x + 25, this.y + 15, this.directionX, this.directionY
+        ),
+        new Shotgun(
+          this.game, this.x + 15, this.y + 15, this.directionX, this.directionY
+        ),
+        new Shotgun(
+          this.game, this.x + 5, this.y + 15, this.directionX, this.directionY
+        )
+      )
+    }
   }
 }
 

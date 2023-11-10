@@ -40,13 +40,13 @@ export default class InputHandler {
         if (this.random <= 0.25) {
           this.sound.playSound()
         } else if (this.random > 0.25 && this.random <= 0.5) {
-          this.sound.playSexBomb()
+          this.sound.playMarkFnaf1()
         }
         else if (this.random > 0.5 && this.random <= 0.75) {
-          this.sound.playMarkFnaf1()
+          this.sound.playMarkFnaf2()
         }
         else if (this.random > 0.75) {
-          this.sound.playMarkFnaf1()
+          this.sound.playMarkFnaf4()
         }
       }
 
@@ -64,13 +64,13 @@ export default class InputHandler {
         if (this.random <= 0.25) {
           this.sound.playSound()
         } else if (this.random > 0.25 && this.random <= 0.5) {
-          this.sound.playSexBomb()
+          this.sound.playMarkFnaf1()
         }
         else if (this.random > 0.5 && this.random <= 0.75) {
-          this.sound.playMarkFnaf1()
+          this.sound.playMarkFnaf2()
         }
         else if (this.random > 0.75) {
-          this.sound.playMarkFnaf1()
+          this.sound.playMarkFnaf4()
         }
       }
 

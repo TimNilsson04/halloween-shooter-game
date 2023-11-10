@@ -78,22 +78,29 @@ export default class UserInterface {
         this.game.height / 2 + 80,
       )
       context.fillText(
-        `You can also teleport by going into the walls 😉`,
+        `These are the weapon upgrades    =>`,
         this.game.width / 2 - 570,
         this.game.height / 2 + 130,
       )
       context.fillText(
-        `This is a fast paced game so be ready!`,
+        `You can also teleport by going into the walls 😉`,
         this.game.width / 2 - 570,
         this.game.height / 2 + 180,
       )
       context.fillText(
-        `Good luck have fun  😊 One more tip, turn up the volume`,
+        `This is a fast paced game so be ready!`,
         this.game.width / 2 - 570,
         this.game.height / 2 + 230,
       )
+      context.fillText(
+        `Good luck have fun  😊 One more tip, turn up the volume`,
+        this.game.width / 2 - 570,
+        this.game.height / 2 + 280,
+      )
       context.fillStyle = "#0f0"
       context.fillRect(this.game.width / 2 - 290, this.game.height / 2 + 56, 32, 32)
+      context.fillStyle = "#FF0000"
+      context.fillRect(this.game.width / 2 - 145, this.game.height / 2 + 106, 32, 32)
       context.fillStyle = "#970AFC"
       context.fillText(
         `Press f to start`,

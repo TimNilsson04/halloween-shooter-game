@@ -9,7 +9,7 @@ export default class WeaponDrop extends Enemy {
         this.y = y
         this.speed = 0
         this.lives = 1
-        this.color = '#0f0'
-        this.type = 'weaponDrop'
+        this.color = '#FF0000'
+        this.type = 'weapondrop'
     }
 }
