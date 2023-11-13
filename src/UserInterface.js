@@ -22,9 +22,15 @@ export default class UserInterface {
     context.fillText(`Round: ${this.game.round}`, 20, 90)
     context.fillText(`Time: ${(this.game.gameTime * 0.001).toFixed(1)}s`, 20, 60)
 
+    if (this.game.weaponUpgrade === 1) {
+      console.log("hello")
+      context.fillStyle = "#fff"
+      context.textAlign = 'center'
+      context.fillText(`Upgraded Weapon: ${Math.ceil((this.game.weaponTimer - this.game.gameTime) / 1000)}`, this.game.width / 2, 70)
+    }
+
     if (this.game.gameOver) {
       context.textAlign = 'center'
-      context.font = `50px ${this.fontFamily}`
       context.fillText(
         'Game over',
         this.game.width / 2,
